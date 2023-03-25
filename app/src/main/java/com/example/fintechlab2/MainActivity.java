@@ -42,12 +42,10 @@ public class MainActivity extends AppCompatActivity {
         } else{
             String txtFromSpinner = this.spOptionSelection.getSelectedItem().toString();
             if(txtFromSpinner.equals("Words")){
-                Log.d("Table", "Labas: ");
                 int wordsCount = TextCounter.countWords(this.txtMain.getText().toString());
                 String wordsCountFormatted = String.valueOf(wordsCount);
                 this.tvResult.setText(wordsCountFormatted);
             } else{
-                Log.d("Table1", "Labas1: ");
                 int charsCount = TextCounter.getCharsCount(this.txtMain.getText().toString());
                 String charsCountFormatted = String.valueOf(charsCount);
                 this.tvResult.setText(charsCountFormatted);
