@@ -1,6 +1,7 @@
 package com.example.fintechlab2;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         this.tvResult = findViewById(R.id.tvResult);
         this.txtMain = findViewById(R.id.txtMain);
         this.spOptionSelection = findViewById(R.id.spOptionSelection);
-        this.wordsSelected = getResources().getString(R.string.words_selected);
         this.emptyTextMessage = getResources().getString(R.string.empty_text_message);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.counting_options, android.R.layout.simple_spinner_item);
@@ -40,11 +40,14 @@ public class MainActivity extends AppCompatActivity {
         if(txtMain.getText().toString().isEmpty() ){
             Toast.makeText(this, emptyTextMessage, Toast.LENGTH_LONG).show();
         } else{
-            if(this.spOptionSelection.getSelectedItem().toString().equalsIgnoreCase(wordsSelected)){
-                int wordsCount = TextCounter.getWordsCount(this.txtMain.getText().toString());
+            String txtFromSpinner = this.spOptionSelection.getSelectedItem().toString();
+            if(txtFromSpinner.equals("Words")){
+                Log.d("Table", "Labas: ");
+                int wordsCount = TextCounter.countWords(this.txtMain.getText().toString());
                 String wordsCountFormatted = String.valueOf(wordsCount);
                 this.tvResult.setText(wordsCountFormatted);
             } else{
+                Log.d("Table1", "Labas1: ");
                 int charsCount = TextCounter.getCharsCount(this.txtMain.getText().toString());
                 String charsCountFormatted = String.valueOf(charsCount);
                 this.tvResult.setText(charsCountFormatted);
