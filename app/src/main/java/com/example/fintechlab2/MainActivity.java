@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBtnCalculateClick(View view) {
         if(txtMain.getText().toString().isEmpty() ){
             Toast.makeText(this, emptyTextMessage, Toast.LENGTH_LONG).show();
+            this.tvResult.setText("0");
+
         } else{
             String txtFromSpinner = this.spOptionSelection.getSelectedItem().toString();
             if(txtFromSpinner.equals("Words")){
